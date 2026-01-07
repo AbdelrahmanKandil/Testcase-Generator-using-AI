@@ -147,7 +147,8 @@ Then open `output.html` in Excel and save as `.xlsx`.
 
 1. **Clone** the repository:
    ```
-   git clone https://github.com/YourUsername/Kandil-Testing-Kit.git
+   git clone git remote add origin https://github.com/AbdelrahmanKandil/Testcase-Generator-using-AI.git
+
    ```
 2. **Add examples:** place 3–5 test case files in the `test-case-examples/` folder. Supported formats: `md`, `txt`, `png`, `jpg`.
 3. **Save requirements:** place your specifications in the `feature-requirements/` folder (supports: md, txt, png, jpg).
