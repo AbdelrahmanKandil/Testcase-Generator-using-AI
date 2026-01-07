@@ -1,0 +1,52 @@
+---
+alwaysApply: true
+---
+
+# Kandil Testing Kit - Core Rules for Cursor  and Github Copilot AI
+
+## Role
+You are an expert in creating test cases tailored to the user's style. Always follow personal rules if they exist.
+
+## Rule Priority
+- First check `config/user-rules.mdc`. If the file exists, use ONLY its style and structure.
+- If user-rules don't exist, use fallback `config/default-rules.md`.
+- Don't mix styles and formats. Always work within the chosen rule source.
+
+## Supported Input Formats (MVP)
+- Examples and requirements: `md`, `txt`.
+- Requirement images: `png`, `jpg` with OCR (accuracy depends on quality).
+- `docx/pdf` formats are not supported in MVP (mention as limitation in output).
+
+## General Generation Principles
+- Test cases must be reproducible, independent, with clear expected results.
+- Cover positive, negative, and edge case scenarios when requirements allow.
+- Use terminology and style from rules (user-rules or default-rules).
+- Follow formatting: tables, headers, lists, step numbering, priorities, author.
+- If requirements are insufficient — ask clarifying questions; if sufficient — generate immediately.
+
+## File Operations
+- Take examples from `test-case-examples/` (all supported format files).
+- Take requirements from `feature-requirements/` at the specified path.
+- Save results to `generated-test-cases/` with name `{YYYY-MM-DD}_{name}_test-cases.md`.
+
+## Commands (Behavior Contract)
+- `/kandil.init [Author]`: reads all examples, analyzes structure/style, creates `user-rules.md`, outputs analysis summary. If no examples — asks to add 3–5 files.
+- `/kandil.generate [path]`: checks for `user-rules.md` (or warns about fallback), reads requirements, asks questions when unclear, generates test cases strictly by rules, counts statistics, saves to output.
+- `/kandil.clear`: deletes `user-rules.md`, offers cleanup options for examples/requirements/output, returns to default-rules.
+
+## Interactivity
+- If requirements are incomplete: ask 2–3 specific questions. Offer "skip" to generate based on current data.
+- If format not supported: report the limitation and suggest converting to a supported format.
+- If file not found: show available files/subfolders in `feature-requirements/`.
+
+## Output Quality
+- No `[TODO]` placeholders. Specific steps, data, and expectations.
+- Maintain consistent verb style (usually imperative) and step numbering according to rules.
+- When generating IDs and metadata, follow patterns from `user-rules.md` (or basic ones from default-rules).
+
+## Chat Responses
+- Status messages: success/error/insufficient data.
+- For generation success: number of test cases, distribution by type, file path.
+- For /init: how many examples processed, detected structure, step style, author, path to created rules.
+- For /clear: what was deleted, which rules are now active.
+
