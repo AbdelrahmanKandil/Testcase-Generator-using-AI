@@ -147,8 +147,8 @@ Then open `output.html` in Excel and save as `.xlsx`.
 
 1. **Clone** the repository:
    ```
-   git clone git remote add origin https://github.com/AbdelrahmanKandil/Testcase-Generator-using-AI.git
-
+   git clone https://github.com/AbdelrahmanKandil/Testcase-Generator-using-AI.git
+   cd Testcase-Generator-using-AI
    ```
 2. **Add examples:** place 3–5 test case files in the `test-case-examples/` folder. Supported formats: `md`, `txt`, `png`, `jpg`.
 3. **Save requirements:** place your specifications in the `feature-requirements/` folder (supports: md, txt, png, jpg).
@@ -161,7 +161,8 @@ Then open `output.html` in Excel and save as `.xlsx`.
    ```
    /kandil.generate feature-requirements/your-file.md
    ```
-   The resulting file will appear in `generated-test-cases/{YYYY-MM-DD}_{name}_test-cases.md`.
+   - Using GitHub Copilot/ChatGPT: ask `Generate test cases from: feature-requirements/your-file.md`.
+   - The resulting file appears in `generated-test-cases/{YYYY-MM-DD}_{name}_test-cases.md`.
 6. **Reset style (if needed):** if you want to change generation rules, run
    ```
    /kandil.clear
@@ -174,6 +175,8 @@ Then open `output.html` in Excel and save as `.xlsx`.
 
 - `/kandil.init` — analyzes your examples, creates personal rules (user-rules), shows summary.
 - `/kandil.generate` — uses active rules and requirements, generates test cases.
+   - Using Copilot/ChatGPT: ask `Generate test cases from: feature-requirements/your-file.md`.
+   - If the requirements file has multiple user stories, specify the one to focus on (e.g., “Generate test cases for user story: checkout flow”).
 - `/kandil.clear` — resets user-rules, offers cleanup of examples/requirements/output.
 
 ---
